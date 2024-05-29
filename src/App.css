@@ -1,8 +1,15 @@
+@font-face {
+  font-family: 'ElgocThin';
+  src: url('/fonts/Elgoc-Thin.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Elgoc', sans-serif;
+  font-family: 'ElgocThin', sans-serif;
 }
 
 body, html {
@@ -13,12 +20,18 @@ body, html {
   position: relative;
   height: 100vh;
   width: 100%;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
   background-color: black;
   color: white;
+}
+
+.full-screen-text {
+  position: fixed;
+  width: 100vw;
+  text-align: center;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .header {
@@ -26,21 +39,24 @@ body, html {
   width: 100%;
   text-transform: uppercase;
   text-align: center;
-  padding: 1em;
+  padding: 1.5em;
   z-index: 2;
   opacity: 0;
   mix-blend-mode: difference;
 }
 
 h1 {
-  letter-spacing: -0.5px;
+  letter-spacing: 1px;
   font-size: 7vw;
+  font-weight: bold;
 }
 
 h2 {
   letter-spacing: -0.5px;
-  font-size: 6vw;
+  font-size: 13vw;
   font-weight: 400;
+  mix-blend-mode: difference;
+  z-index: 1;
 }
 
 .footer {
@@ -50,11 +66,12 @@ h2 {
   width: 100%;
   padding: 1.5em;
   opacity: 0;
+  z-index: 5;
 }
 
 .footer-content {
   font-size: 1.8vw;
-  font-weight: 400;
+  font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,7 +84,7 @@ a, a:hover, a:active, a:visited, a:focus {
   letter-spacing: 0.01em;
   text-decoration: none;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .image-gallery {
@@ -77,6 +94,7 @@ a, a:hover, a:active, a:visited, a:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 3;
 }
 
 .image-gallery img {
@@ -127,18 +145,37 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 @media only screen and (max-width: 900px) {
+  .image-gallery {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+    .image-gallery img {
+    height: 50%;
+  }
+  .header {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+  }
+  h1 {
+    font-size: 45px;
+    line-height: 36px;
+  }
+  .mb-header {
+    width: 70%;
+  }
   .footer-content {
-    font-size: 18px;
+    font-size: 20px;
   }
   a, a:hover, a:active, a:visited, a:focus {
-    font-size: 18px;
+    font-size: 20px;
   }
   .overlay-content {
     width: 80%;
-    font-size: 16px;
-    font-weight: 400;
-  }
-  .image-gallery img {
-    height: 60%;
+    font-size: 18px;
+    font-weight: 600;
   }
 }

@@ -94,7 +94,11 @@ function App() {
     <>
       <div className="container">
         <div className="header">
+          <div className="mb-header">
           <h1>Carols Furnished Rentals</h1>
+          </div>
+        </div>
+        <div className="full-screen-text">
           <h2>Interior Design Studio</h2>
         </div>
         <div className="image-gallery">
