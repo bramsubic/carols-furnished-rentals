@@ -41,14 +41,31 @@ function App() {
       });
     };
 
+    const handleTouchMove = (event) => {
+      if (isOverlayVisible) return; // Prevent touch move actions when overlay is visible
+
+      const touch = event.touches[0];
+      const { clientX } = touch;
+      const screenWidth = window.innerWidth;
+      const touchX = (clientX / screenWidth) * 100;
+      const index = Math.floor((touchX / 100) * images.length);
+
+      imageRefs.current.forEach((img, i) => {
+        img.style.display = i === index ? "block" : "none";
+      });
+    };
+
     if (!isOverlayVisible) {
       window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("touchmove", handleTouchMove);
     } else {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
     }
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
     };
   }, [isOverlayVisible]);
 
@@ -69,9 +86,6 @@ function App() {
     
     // Set overlay visibility to false after animation completes
     animation.finished.then(() => {
-      setIsOverlayVisible(false);
-    });
-    closeButtonAnimation.finished.then(() => {
       setIsOverlayVisible(false);
     });
   };
@@ -100,7 +114,7 @@ function App() {
         <div className="footer">
           <div className="footer-content">
             <div>
-              <a href="mailto:info@carolsfurnishedrentals.com">EMAIL</a>
+              <a href="mailto:info@carolsfurnishedrentals.com">EMAIL, &nbsp;</a>
             </div>
             <div>
               <p onClick={handleInfoClick} style={{ cursor: "pointer" }}>

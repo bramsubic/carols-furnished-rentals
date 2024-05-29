@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Gotham', sans-serif;
+  font-family: 'Elgoc', sans-serif;
 }
 
 body, html {
@@ -13,39 +13,39 @@ body, html {
   position: relative;
   height: 100vh;
   width: 100%;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   background-color: black;
   color: white;
 }
 
 .header {
-  position: absolute;
-  top: 0;
+  position: fixed;
   width: 100%;
   text-transform: uppercase;
+  text-align: center;
   padding: 1em;
   z-index: 2;
   opacity: 0;
+  mix-blend-mode: difference;
 }
 
 h1 {
-  font-weight: bolder;
-  font-style: italic;
   letter-spacing: -0.5px;
-  font-size: 13px;
+  font-size: 7vw;
 }
 
 h2 {
   letter-spacing: -0.5px;
-  font-size: 10.5px;
+  font-size: 6vw;
   font-weight: 400;
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
+  text-align: center;
   bottom: 0;
   width: 100%;
   padding: 1.5em;
@@ -53,15 +53,17 @@ h2 {
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
+  font-size: 1.8vw;
   font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 a, a:hover, a:active, a:visited, a:focus {
   color: white;
-  font-size: 13px;
+  font-size: 1.8vw;
   letter-spacing: 0.01em;
   text-decoration: none;
   text-transform: uppercase;
@@ -78,7 +80,7 @@ a, a:hover, a:active, a:visited, a:focus {
 }
 
 .image-gallery img {
-  width: 70%;
+  width: 100%;
   height: 80%;
   object-fit: contain;
   z-index: 3;
@@ -107,6 +109,8 @@ a, a:hover, a:active, a:visited, a:focus {
   text-align: center;
   background-color: none;
   width: 50%;
+  font-size: 20px;
+  letter-spacing: 0.5px;
 }
 
 .close-button {
@@ -117,21 +121,24 @@ a, a:hover, a:active, a:visited, a:focus {
   background: none;
   border: none;
   color: white;
-  font-size: 13px;
+  font-size: 20px;
   font-weight: 400;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .footer-content {
-    text-align: center;
+    font-size: 18px;
   }
-  .header {
-    font-size: 13px;
+  a, a:hover, a:active, a:visited, a:focus {
+    font-size: 18px;
   }
   .overlay-content {
     width: 80%;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
+  }
+  .image-gallery img {
+    height: 60%;
   }
 }
